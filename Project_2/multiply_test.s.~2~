@@ -1,0 +1,11 @@
+  .data
+  .main
+
+  move $a0, 2
+  move $a1, 2
+
+multiply_function:
+  addi $sp, $sp, -8
+  sw $a0, 0 )
+
+  

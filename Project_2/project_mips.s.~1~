@@ -1,0 +1,75 @@
+.data
+prompt1:  .asciiz"Enter non-negative base:"
+prompt2:  .asciiz"Enter non-negative exponent:"
+newline:  .asciiz"\n"
+
+#base_number is associated with $s0
+#exponent_number is associated with $s1
+  
+
+.text
+
+main: #Give the prompt1
+      la $a0, prompt1
+      li $v0, 4
+      syscall     
+
+      #Scan user's input for base number and store in $s0
+      li $v0, 5  
+      syscall
+      move $s0, $v0
+  
+      #Make a newline
+      la $a0, newline
+      li $v0, 4
+      syscall 
+    
+      #Give the prompt2
+      la $a0, prompt2
+      li $v0, 4
+      syscall
+
+      #Scan user's input for exponent number store in $s1
+      li $v0, 5  
+      syscall
+      move $s1, $v0
+
+      #Make a newline
+      la $a0, newline
+      li $v0, 4
+      syscall 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  

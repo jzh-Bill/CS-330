@@ -1,0 +1,9 @@
+.data
+
+.text
+main:
+  li $v0, 1
+  addu $a0, $zero, 1000
+  syscall
+
+

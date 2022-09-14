@@ -1,0 +1,49 @@
+.data
+even_prompt:  .asciiz "This is even"
+odd_prompt:   .ascciz "This is odd"
+
+ 
+.text
+
+main: 
+
+  #if(b is odd)
+  and $s1, $s2, 0x1
+  bne $s1, 0x1, branch_out
+  la $a, odd_prompt
+  li $v0, 4
+  syscall
+
+branch_out:
+  la $a, even_prompt
+  li $v0, 4
+  syscall
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

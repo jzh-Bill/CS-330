@@ -1,0 +1,8 @@
+.text
+main: ori $v0, $zero, 1
+
+syscall
+addu $a0, $zero, $t1
+syscall
+
+j $ra

@@ -1,0 +1,55 @@
+li $s2, 0                # i = 0
+for_2: # The second loop starts
+
+  li $s6, 1              # $s6 = 1
+  sub $t9, $s2, $s6      # $t9 = n - 1
+  bge $s2, $t9, for_2_exit  # for( i < (n-1))
+  move $s3, $s2          # min_position  = i
+
+addi $s5, $s2, 1    # j = i + 1
+for_3:  # for ( j < n )
+    bge $s5, $t9, for_3_exit
+
+    # transfer index to off-set min_pos and j
+    sll $t0, $s3, 2
+    addu $t1, $t0, $s7 # The off-set index of min_pos: $t1
+
+    sll $t2, $s5, 2
+    addu $t3, $t2, $s7  # The off-set index of j: $t3
+
+    lw $t4, 0($t1) # $t4 = list[min_pos]
+    lw $t5, 0($t3) # $t5 = list[j]
+  
+#if statement
+bge $t4, $t5, if_exit
+  
+      move $s3, $s5
+  
+if_exit:
+  
+j for_3
+for_3_exit:
+
+    #swap part:
+    #find out that list[i]
+    sll $t6, $s2, 2
+    addu $t7, $t6, $s7 
+    lw $t8, 0($t7)    # $t8 = list[i]
+
+    move $s4, $t8     # temp = list[i] 
+
+    sw $t4, 0($t7)    # list[i] = list[min_pos]
+    sw $s4, 0($t1)    # list[min_pos] = temp
+
+  addi $s5, $s5, 1 # j++
+  
+  # i++
+
+addi $s2, $s2, 1
+j for_2
+for_2_exit:
+
+#Print out a new line
+la $a0, newline
+li $v0, 4
+syscall

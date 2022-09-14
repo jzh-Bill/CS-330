@@ -1,0 +1,14 @@
+
+.text
+ 
+main: 
+
+  li $a1, 2
+  
+  sra $a1, $a1, 2
+
+  move $a0, $a1
+
+  li $v0, 1
+  
+  syscall

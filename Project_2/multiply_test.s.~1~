@@ -1,0 +1,7 @@
+  .data
+  .main
+
+  move $a0, 2
+  move $a1, 2
+
+  
